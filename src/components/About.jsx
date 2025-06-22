@@ -53,9 +53,9 @@ const About = () => {
       >
         🚀 I'm a full-stack dev riding the PERN stack 🌊 — crafting seamless UIs with React ⚛️, scalable backends with Node.js 🔧, and blending AI 🔮 into the mix to make products smarter and faster. Whether it’s building intuitive interfaces or smart integrations, I thrive where frontend meets backend meets intelligence.
         <br /><br />
-        📊 Data isn't just numbers — it's a story waiting to be told. I specialize in collecting, cleaning, and analyzing data to uncover trends, highlight patterns, and drive smarter decisions. From building dashboards that simplify complex metrics to writing efficient scripts with Python, SQL, and Pandas, I turn raw data into clear, actionable insights. I ensure the data actually works for the product, the user, and the team behind it.
+        📊 Data isn't just numbers — it's a story waiting to be told.I specialize in collecting 🗂️, cleaning 🧹, and analyzing 📈 data to uncover trends, highlight patterns, and drive smarter decisions. From building dashboards that simplify complex metrics to writing efficient scripts with Python, SQL, and Pandas, I turn raw data into clear, actionable insights 🔍. I ensure the data actually works for the product, the user, and the team behind it 👥.
         <br /><br />
-       🧠 I move fast ⚡, learn faster 🧪, and collaborate tightly 🤝 to turn ideas into elegant, high-performance solutions. Every project I touch blends thoughtful UX 🎨 with robust code and a clear goal: solve real-world problems — beautifully and efficiently.
+       🧠 I move fast ⚡, learn faster 🧪, and collaborate tightly 🤝 to turn ideas into elegant, high-performance solutions. Every project I touch blends thoughtful UX 🎨 with robust code and a clear goal: build things that matter, and build them well ✅.
       </motion.p>
 
       {/* Cards Grid */}
