@@ -49,7 +49,7 @@ const Contact = () => {
               href={url}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.2, rotate: 5 }}
+              whileHover={{ scale: 1.2, rotate: -5 }}
               whileTap={{ scale: 0.95 }}
               className="w-14 h-14 flex items-center justify-center rounded-full bg-tertiary text-white shadow-md hover:shadow-lg transition-all duration-300"
               title={label}
