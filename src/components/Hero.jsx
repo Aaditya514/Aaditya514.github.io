@@ -59,7 +59,7 @@ const Hero = () => {
 
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
             Full-Stack  Developer & <br className="sm:block hidden" />
-            Data Analytics Enthusiast.
+            Data Analytics Learner.
           </p>
 
           <p className="mt-4 text-white-100 text-[17px] max-w-lg leading-[30px]">
