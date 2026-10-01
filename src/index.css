@@ -21,6 +21,22 @@ html {
   display: block;
 }
 
+/* Developer dot-grid background pattern inspired by suketkamboj.in */
+.bg-grid-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* React Bits ShinyText Keyframes */
+@keyframes shiny-sweep {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
 .black-gradient {
   background: #000000; /* fallback for old browsers */
   background: -webkit-linear-gradient(

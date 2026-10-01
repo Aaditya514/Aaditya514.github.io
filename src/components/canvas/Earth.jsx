@@ -43,7 +43,7 @@
 
 // export default EarthCanvas;
 
-import { useRef, useEffect, useState, Suspense } from "react";
+import { Suspense, useState, useEffect, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import CanvasLoader from "../Loader";
@@ -56,50 +56,45 @@ const Earth = () => {
 };
 
 const EarthCanvas = () => {
-  const containerRef = useRef(null);
-  const [dimensions, setDimensions] = useState({ width: 300, height: 300 });
+  const wrapperRef = useRef(null);
+  const [inView, setInView] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => {
-      if (containerRef.current) {
-        setDimensions({
-          width: containerRef.current.clientWidth,
-          height: containerRef.current.clientHeight,
-        });
-      }
-    };
-
-    handleResize(); // set initial size
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setInView(true); },
+      { rootMargin: "200px" } // start loading 200px before it enters
+    );
+    if (wrapperRef.current) observer.observe(wrapperRef.current);
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <div ref={containerRef} className="w-full h-full">
-      <Canvas
-        style={{ width: dimensions.width, height: dimensions.height }}
-        shadows
-        frameloop="demand"
-        dpr={[1, 2]}
-        gl={{ preserveDrawingBuffer: true }}
-        camera={{
-          fov: 45,
-          near: 0.1,
-          far: 200,
-          position: [-4, 3, 6],
-        }}
-      >
-        <Suspense fallback={<CanvasLoader />}>
-          <OrbitControls
-            autoRotate
-            enableZoom={false}
-            maxPolarAngle={Math.PI / 2}
-            minPolarAngle={Math.PI / 2}
-          />
-          <Earth />
-          <Preload all />
-        </Suspense>
-      </Canvas>
+    <div ref={wrapperRef} className="w-full h-full">
+      {inView ? (
+        <Canvas
+          shadows
+          dpr={[1, 1.5]}
+          gl={{ preserveDrawingBuffer: true, powerPreference: "default" }}
+          camera={{ fov: 45, near: 0.1, far: 200, position: [-4, 3, 6] }}
+        >
+          <Suspense fallback={<CanvasLoader />}>
+            <OrbitControls
+              autoRotate
+              autoRotateSpeed={1.5}
+              enableZoom={false}
+              maxPolarAngle={Math.PI / 2}
+              minPolarAngle={Math.PI / 2}
+            />
+            <Earth />
+            <Preload all />
+          </Suspense>
+        </Canvas>
+      ) : (
+        // Lightweight placeholder until canvas enters viewport
+        <div className="w-full h-full flex items-center justify-center">
+          <div className="w-16 h-16 rounded-full border-2 border-[#915eff]/40 animate-pulse" />
+        </div>
+      )}
     </div>
   );
 };

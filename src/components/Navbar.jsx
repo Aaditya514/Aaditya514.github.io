@@ -1,129 +1,188 @@
-import { useState, useEffect } from 'react';
-import { Menu, X, Home, User, Briefcase, Mail, FileText } from 'lucide-react';
+import { useRef, useState, useEffect } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "framer-motion";
+import { TbHome, TbUser, TbBriefcase2, TbTrophy, TbSocial } from "react-icons/tb";
+
+const navLinks = [
+  { id: "hero",     title: "Home",       icon: TbHome },
+  { id: "about",    title: "About",      icon: TbUser },
+  { id: "work",     title: "Experience", icon: TbBriefcase2 },
+  { id: "projects", title: "Projects",   icon: TbBriefcase2 },
+  { id: "tech",     title: "Skills",     icon: TbTrophy },
+  { id: "contact",  title: "Contact",    icon: TbSocial },
+];
+
+const IconContainer = ({ mouseX, title, icon: Icon, id, onClick, isActive }) => {
+  const ref = useRef(null);
+
+  const distance = useTransform(mouseX, (val) => {
+    const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
+    return val - bounds.x - bounds.width / 2;
+  });
+
+  const widthTransform = useTransform(distance, [-150, 0, 150], [40, 72, 40]);
+  const heightTransform = useTransform(distance, [-150, 0, 150], [40, 72, 40]);
+
+  const widthTransformIcon = useTransform(distance, [-150, 0, 150], [20, 36, 20]);
+  const heightTransformIcon = useTransform(distance, [-150, 0, 150], [20, 36, 20]);
+
+  const width = useSpring(widthTransform, {
+    mass: 0.1,
+    stiffness: 150,
+    damping: 12,
+  });
+  const height = useSpring(heightTransform, {
+    mass: 0.1,
+    stiffness: 150,
+    damping: 12,
+  });
+
+  const widthIcon = useSpring(widthTransformIcon, {
+    mass: 0.1,
+    stiffness: 150,
+    damping: 12,
+  });
+  const heightIcon = useSpring(heightTransformIcon, {
+    mass: 0.1,
+    stiffness: 150,
+    damping: 12,
+  });
+
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <button
+      onClick={() => onClick(id)}
+      className="cursor-pointer relative focus:outline-none"
+      aria-label={title}
+    >
+      <motion.div
+        ref={ref}
+        style={{ width, height }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        className={`aspect-square rounded-full flex items-center justify-center relative transition-colors duration-200 ${
+          isActive
+            ? "bg-[#7c5dfa] text-white shadow-lg shadow-[#7c5dfa]/40"
+            : "bg-[#262626] dark:bg-neutral-800 text-neutral-300 hover:bg-[#333333] hover:text-white"
+        }`}
+      >
+        <AnimatePresence>
+          {hovered && (
+            <motion.div
+              key="tooltip"
+              initial={{ opacity: 0, y: 10, x: "-50%" }}
+              animate={{ opacity: 1, y: 0, x: "-50%" }}
+              exit={{ opacity: 0, y: 2, x: "-50%" }}
+              className="px-2.5 py-1 whitespace-pre rounded-md bg-[#18181b] border border-neutral-700/80 text-white font-medium absolute left-1/2 -top-9 -translate-x-1/2 text-xs shadow-2xl pointer-events-none z-50"
+            >
+              {title}
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <motion.div
+          style={{ width: widthIcon, height: heightIcon }}
+          className="flex items-center justify-center"
+        >
+          <Icon className="w-full h-full stroke-[1.8]" />
+        </motion.div>
+      </motion.div>
+    </button>
+  );
+};
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
-
-  const navLinks = [
-    { id: 'hero', title: 'Home', icon: Home },
-    { id: 'about', title: 'About', icon: User },
-    { id: 'projects', title: 'Projects', icon: Briefcase },
-    { id: 'contact', title: 'Contact', icon: Mail }
-  ];
-
-  const resumeLink = "https://drive.google.com/file/d/149n5JvjYIB8C_vUEXfCfSG67OvG59VPS/view?usp=sharing";
+  const [activeSection, setActiveSection] = useState("hero");
+  const [showNavbar, setShowNavbar] = useState(false);
+  const mouseX = useMotionValue(Infinity);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
+      // Navbar only shows when entering the 3D model screen (#hero)
+      const heroEl = document.getElementById("hero");
+      if (heroEl) {
+        const rect = heroEl.getBoundingClientRect();
+        setShowNavbar(rect.top <= window.innerHeight * 0.7);
+      } else {
+        setShowNavbar(window.scrollY > 250);
+      }
+
+      const isAtBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 100;
+
+      if (isAtBottom) {
+        setActiveSection("contact");
+        return;
+      }
+
+      const sections = ["contact", "tech", "projects", "about", "hero"];
+
+      for (const section of sections) {
+        const el = document.getElementById(section);
+        if (el) {
+          const target = el.closest("section") || el;
+          const rect = target.getBoundingClientRect();
+          if (rect.top <= window.innerHeight * 0.5 && rect.bottom >= 100) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const target = element.closest("section") || element;
+      if (window.lenis) {
+        window.lenis.scrollTo(target, { duration: 1.4, offset: 0 });
+      } else {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
     }
     setActiveSection(sectionId);
-    setIsOpen(false);
   };
 
-  const toggleMenu = () => setIsOpen(!isOpen);
-
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'backdrop-blur-md bg-white/10' : 'bg-transparent'
-      }`}
+    /* Always in DOM — opacity/y driven by showNavbar to avoid AnimatePresence
+       insertBefore crash when the header mounts/unmounts while React is mid-commit. */
+    <motion.header
+      initial={{ opacity: 0, y: 40 }}
+      animate={{
+        opacity: showNavbar ? 1 : 0,
+        y: showNavbar ? 0 : 40,
+      }}
+      transition={{ duration: 0.35, ease: "easeOut" }}
+      className="fixed bottom-4 sm:bottom-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none"
+      style={{ pointerEvents: showNavbar ? undefined : "none" }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">A</span>
-            </div>
-            <div className="hidden sm:block">
-              <h1 className="text-white text-xl font-bold">Aaditya Aanand</h1>
-            </div>
-          </div>
-
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map(({ id, title, icon: Icon }) => (
-              <button
-                key={id}
-                onClick={() => scrollToSection(id)}
-                className={`flex items-center space-x-1 px-3 py-2 rounded-lg transition-all duration-300 text-white hover:bg-white/10 ${
-                  activeSection === id ? 'bg-white/10' : ''
-                }`}
-              >
-                <Icon size={18} />
-                <span className="font-medium">{title}</span>
-              </button>
-            ))}
-            {/* Resume */}
-            <a
-              href={resumeLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-            >
-              <FileText size={18} />
-              <span>Resume</span>
-            </a>
-          </div>
-
-          {/* Mobile Menu Toggle */}
-          <div className="md:hidden">
-            <button
-              onClick={toggleMenu}
-              className="p-2 text-white hover:bg-white/10 rounded-lg"
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Nav */}
-      <div
-        className={`md:hidden transition-all duration-300 ease-in-out ${
-          isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
-        }`}
+      <motion.div
+        onMouseMove={(e) => mouseX.set(e.pageX)}
+        onMouseLeave={() => mouseX.set(Infinity)}
+        className="pointer-events-auto mx-auto flex h-16 gap-3 sm:gap-4 items-end rounded-2xl bg-[#141417]/90 dark:bg-neutral-900/90 px-4 pb-3 border border-white/10 backdrop-blur-2xl shadow-[0_12px_40px_rgba(0,0,0,0.8)]"
       >
-        <div className="bg-black/80 backdrop-blur-md border-t border-white/10 shadow-lg">
-          <div className="px-4 py-6 space-y-4">
-            {navLinks.map(({ id, title, icon: Icon }) => (
-              <button
-                key={id}
-                onClick={() => scrollToSection(id)}
-                className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-white transition-all duration-300 ${
-                  activeSection === id ? 'bg-white/10' : 'hover:bg-white/10'
-                }`}
-              >
-                <Icon size={20} />
-                <span className="font-medium text-left">{title}</span>
-              </button>
-            ))}
-            {/* Resume */}
-            <a
-              href={resumeLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full flex items-center justify-center space-x-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-3 rounded-lg font-semibold transition-all duration-300 mt-4 shadow-lg"
-            >
-              <FileText size={20} />
-              <span>Download Resume</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </nav>
+        {navLinks.map((item) => (
+          <IconContainer
+            mouseX={mouseX}
+            key={item.id}
+            {...item}
+            onClick={scrollToSection}
+            isActive={activeSection === item.id}
+          />
+        ))}
+      </motion.div>
+    </motion.header>
   );
 };
 

@@ -1,14 +1,10 @@
 import {
-  mobile,
   backend,
   creator,
   web,
   javascript,
-  html,
-  // typescript,
   css,
-  reactjs,
-  // redux,
+  angular,
   tailwind,
   nodejs,
   express,
@@ -17,24 +13,18 @@ import {
   sql,
   postgres,
   java,
-  pandas,
   python,
   cpp,
-  meta,
-  starbucks,
-  tesla,
-  shopify,
-  Projectjob,
-  Dashboard,
+  docker,
+  postman,
+  typescript,
   notification,
-  // carrent,
-  // postman,
-  // figma,
-  // docker,
-  // jobit,
-  // tripguide,
-  // threejs,
+  priora,
+  automed,
 } from "../assets";
+
+export const resumeLink =
+  "https://drive.google.com/file/d/1NiZY9weOFTHpWhMo-0x940Ltq6M8a9Nn/view?usp=sharing";
 
 export const navLinks = [
   {
@@ -45,12 +35,12 @@ export const navLinks = [
     id: "about",
     title: "About",
   },
-  // {
-  //   id: "work",
-  //   title: "Works",
-  // },
   {
-    id: "projects", // <--- new link
+    id: "work",
+    title: "Experience",
+  },
+  {
+    id: "projects",
     title: "Projects",
   },
   {
@@ -59,10 +49,9 @@ export const navLinks = [
   },
 ];
 
-
 const services = [
   {
-    title: "AI-Driven PERN Application Developer",
+    title: "Enterprise Full-Stack Developer",
     icon: web,
   },
   {
@@ -70,234 +59,257 @@ const services = [
     icon: backend,
   },
   {
-    title: "Data Analytics Enthusiast",
+    title: "Distributed Systems & Cloud",
     icon: creator,
   },
 ];
 
+export const portfolioStats = [
+  { label: "Core Projects", value: "3", sub: "Production-Grade Systems" },
+  { label: "DSA Problems Solved", value: "500+", sub: "LeetCode & GFG" },
+  { label: "Enterprise Stack", value: "Spring Boot", sub: "Angular & PostgreSQL" },
+  { label: "Async Pipelines", value: "BullMQ & Redis", sub: "Distributed Queues" },
+];
+
 const technologies = [
-  // {
-  //   name: "HTML 5",
-  //   icon: html,
-  // },
   {
-    name: "CSS 3",
-    icon: css,
+    name: "TypeScript",
+    icon: typescript,
+    category: "Frontend",
+    level: "Advanced",
+    description: "Strict typing & enterprise UI modeling",
   },
-  // {
-  //   name: "JWT",
-  //   icon: jwt, // Add JWT logo to your icons
-  // },
   {
     name: "JavaScript",
     icon: javascript,
+    category: "Frontend",
+    level: "Advanced",
+    description: "ES6+, Async/Await & Event Loop",
   },
   {
-    name: "React JS",
-    icon: reactjs,
+    name: "Angular",
+    icon: angular,
+    category: "Frontend",
+    level: "Advanced",
+    description: "Enterprise SPAs, Signals, RxJS & Modular Architecture",
   },
-  // {
-  //   name: "Redux Toolkit",
-  //   icon: redux,
-  // },
   {
     name: "Tailwind CSS",
     icon: tailwind,
+    category: "Frontend",
+    level: "Advanced",
+    description: "Responsive utility-first styling",
+  },
+  {
+    name: "CSS 3",
+    icon: css,
+    category: "Frontend",
+    level: "Advanced",
+    description: "Flexbox, Grid & Modern Animations",
   },
   {
     name: "Node JS",
     icon: nodejs,
+    category: "Backend",
+    level: "Advanced",
+    description: "Event-driven runtime & Microservices",
   },
   {
     name: "Express JS",
-    icon: express, // Make sure `express` icon is imported or added in your assets
+    icon: express,
+    category: "Backend",
+    level: "Advanced",
+    description: "RESTful APIs & Middleware design",
+  },
+  {
+    name: "PostgreSQL",
+    icon: postgres,
+    category: "Databases",
+    level: "Advanced",
+    description: "Relational modeling, indexing & ACID",
   },
   {
     name: "MongoDB",
     icon: mongodb,
+    category: "Databases",
+    level: "Intermediate",
+    description: "NoSQL schemas & Aggregation pipelines",
   },
   {
-    name: "postgres",
-    icon: postgres,
+    name: "SQL",
+    icon: sql,
+    category: "Databases",
+    level: "Advanced",
+    description: "Complex queries, joins & optimizations",
   },
   {
     name: "Java",
     icon: java,
+    category: "Languages",
+    level: "Advanced",
+    description: "Spring Boot, JPA, OOP & Design Patterns",
   },
   {
-    name: "SQL",
-    icon: sql, // Add an icon for SQL (e.g., MySQL or PostgreSQL)
+    name: "C++",
+    icon: cpp,
+    category: "Languages",
+    level: "Advanced",
+    description: "Data Structures, Algorithms & STL",
   },
-  // {
-  //   name: "Postman",
-  //   icon: postman, // Add Postman logo to your icons
-  // },
   {
     name: "Python",
     icon: python,
+    category: "Languages",
+    level: "Intermediate",
+    description: "Scripting, Automation & Backend Services",
   },
   {
-    name: "Pandas",
-    icon: pandas, // Add pandas logo
+    name: "Docker",
+    icon: docker,
+    category: "Tools & DevOps",
+    level: "Intermediate",
+    description: "Containerization & Workload Orchestration",
   },
   {
     name: "Git",
     icon: git,
+    category: "Tools & DevOps",
+    level: "Advanced",
+    description: "Version control & collaboration flows",
   },
   {
-    name: "C++",
-    icon: cpp, // Add a C++ logo/icon
-  },
-];
-
-
-const experiences = [
-  {
-    title: "React.js Developer",
-    company_name: "Starbucks",
-    icon: starbucks,
-    iconBg: "#383E56",
-    date: "March 2020 - April 2021",
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
-  },
-  {
-    title: "React Native Developer",
-    company_name: "Tesla",
-    icon: tesla,
-    iconBg: "#E6DEDD",
-    date: "Jan 2021 - Feb 2022",
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
-  },
-  {
-    title: "Web Developer",
-    company_name: "Shopify",
-    icon: shopify,
-    iconBg: "#383E56",
-    date: "Jan 2022 - Jan 2023",
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
-  },
-  {
-    title: "Full stack Developer",
-    company_name: "Meta",
-    icon: meta,
-    iconBg: "#E6DEDD",
-    date: "Jan 2023 - Present",
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
-  },
-];
-
-const testimonials = [
-  {
-    testimonial:
-      "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
-    name: "Sara Lee",
-    designation: "CFO",
-    company: "Acme Co",
-    image: "https://randomuser.me/api/portraits/women/4.jpg",
-  },
-  {
-    testimonial:
-      "I've never met a web developer who truly cares about their clients' success like Rick does.",
-    name: "Chris Brown",
-    designation: "COO",
-    company: "DEF Corp",
-    image: "https://randomuser.me/api/portraits/men/5.jpg",
-  },
-  {
-    testimonial:
-      "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
-    name: "Lisa Wang",
-    designation: "CTO",
-    company: "456 Enterprises",
-    image: "https://randomuser.me/api/portraits/women/6.jpg",
+    name: "Postman",
+    icon: postman,
+    category: "Tools & DevOps",
+    level: "Advanced",
+    description: "API design, testing & documentation",
   },
 ];
 
 const projects = [
   {
-    name: "AI-Job Analyser",
+    name: "Priora — Task Prioritisation",
+    category: "Full-Stack & Systems",
     description:
-      "An AI-powered platform built with React and Node.js that helps job seekers analyze job descriptions, detect workplace red flags, and receive personalized interview strategies. It features real-time insights using Google Gemini, a modern UI, and efficient data storage with PostgreSQL.",
+      "A dynamic task management system replacing static priority labels with real-time mathematical scoring based on deadlines, dependencies, and blockers.",
+    highlights: [
+      "Dynamic priority scoring based on deadlines & blockers",
+      "Dependency tracking to identify delivery bottlenecks",
+      "Interactive visual board with role-based access control",
+    ],
     tags: [
       {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "postgres",
+        name: "Spring Boot",
         color: "green-text-gradient",
       },
       {
-        name: "Google Gemini AI",
+        name: "Angular",
         color: "pink-text-gradient",
       },
+      {
+        name: "PostgreSQL",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Spring Security",
+        color: "orange-text-gradient",
+      },
     ],
-    image: Projectjob,
-    source_code_link: "https://github.com/Aaditya514/job-savvy-ai-guide",
+    source_code_link: "https://github.com/Aaditya514/priora",
+    live_demo_link: "https://github.com/Aaditya514/priora",
   },
   {
-    name: "Notification Service Backend",
+    name: "Auto-Meds — E-Pharmacy",
+    category: "Full-Stack & Systems",
     description:
-      " A scalable backend notification system developed with Node.js and Express, this service efficiently manages real-time alerts across multiple platforms. It features RESTful API endpoints and leverages MongoDB for seamless and reliable data management.",
+      "A healthcare platform streamlining prescription verification workflows, automated maintenance medication refills, and pharmacy inventory management.",
+    highlights: [
+      "Automated recurring refills for maintenance medications",
+      "Prescription verification & real-time inventory tracking",
+      "Dual-portal access for patients and administrators",
+    ],
     tags: [
       {
-        name: " nodejs",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "restapi",
+        name: "Spring Boot",
         color: "green-text-gradient",
       },
       {
-        name: " redis",
+        name: "Angular",
         color: "pink-text-gradient",
       },
+      {
+        name: "PostgreSQL",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "JWT & Security",
+        color: "orange-text-gradient",
+      },
     ],
-    image: notification,
-    source_code_link: "https://github.com/Aaditya514/Notification-Service-Backend",
+    source_code_link: "https://github.com/Aaditya514/auto-meds",
+    live_demo_link: "https://github.com/Aaditya514/auto-meds",
   },
   {
-    name: "Data-Professional-Survey-Dashboard",
+    name: "Notification Service",
+    category: "Backend & Systems",
     description:
-      "An interactive dashboard built with Power BI that visualizes data from a professional survey of the data industry. This project transforms complex survey results into clear, actionable insights with dynamic charts and graphs, enabling users to explore trends, compensation, and skills across the data profession.",
+      "A distributed notification microservice handling asynchronous message dispatching across Email, SMS, and In-App with resilient background queues.",
+    highlights: [
+      "Multi-channel delivery across Email, SMS, and In-App",
+      "Distributed BullMQ queues with automated retry policies",
+      "Dead Letter Queue (DLQ) inspection & job replay engine",
+    ],
     tags: [
       {
-        name: "Power BI",
+        name: "Node.js",
         color: "blue-text-gradient",
       },
       {
-        name: "DAX",
+        name: "BullMQ / Redis",
+        color: "orange-text-gradient",
+      },
+      {
+        name: "Express.js",
         color: "green-text-gradient",
       },
       {
-        name: " Data Visualization",
+        name: "MongoDB",
         color: "pink-text-gradient",
       },
     ],
-    image: Dashboard,
-    source_code_link: "https://github.com/Aaditya514/Data-Professional-Survey-Dashboard",
+    source_code_link: "https://github.com/Aaditya514/Notification-Service",
+    live_demo_link: "https://github.com/Aaditya514/Notification-Service",
   },
 ];
 
-export { services, technologies,experiences, testimonials, projects };
-// 
+export const experiences = [
+  {
+    title: "Software Engineer — Infra & Release Team",
+    company_name: "Intellect Design Arena Ltd.",
+    location: "India",
+    date: "Jun 2026 – Present",
+    type: "Full-time",
+    color: "#915eff",
+    points: [
+      "Working with Docker and Kubernetes in the Infrastructure and Release team to support containerized application workloads across environments.",
+      "Performing Kubernetes pod management and workload troubleshooting, investigating pod failures, restarts, resource issues, and application-related errors.",
+      "Troubleshooting Kubernetes workloads using pod logs, status, events, and resource information to identify and resolve runtime issues.",
+    ],
+    skills: ["Docker", "Kubernetes", "DevOps", "Pod Management", "Infrastructure"],
+  },
+  {
+    title: "Full Stack Intern",
+    company_name: "Steel Authority of India Limited (SAIL)",
+    location: "Bokaro, India",
+    date: "May 2024 – Jun 2024",
+    type: "Internship",
+    color: "#00cea8",
+    points: [
+      "Built a scalable e-commerce platform for Asha Lata using Django, JavaScript, Bootstrap, and SQLite, increasing site traffic by 50% within the first month.",
+      "Integrated authentication and product management, optimized database queries, and improved UI/UX, increasing engagement by 30% and reducing load time by 20%.",
+    ],
+    skills: ["Django", "JavaScript", "Bootstrap", "SQLite", "UI/UX"],
+  },
+];
+
+export { services, technologies, projects };

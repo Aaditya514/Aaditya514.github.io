@@ -1,22 +1,101 @@
-// components/Footer.jsx
-import React from "react";
+import { FaGithub, FaLinkedin, FaArrowUp, FaHeart } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const scrollTo = (id) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <div id="footer" className="w-full bg-black text-white border-t border-white">
-      <footer className="flex flex-col sm:flex-row justify-between items-center px-4 py-2 text-sm">
-        <div className="flex items-center space-x-2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
-            viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
-            strokeLinecap="round" strokeLinejoin="round" className="tabler-icon tabler-icon-rocket">
-            <path d="M4 13a8 8 0 0 1 7 7a6 6 0 0 0 3 -5a9 9 0 0 0 6 -8a3 3 0 0 0 -3 -3a9 9 0 0 0 -8 6a6 6 0 0 0 -5 3" />
-            <path d="M7 14a6 6 0 0 0 -3 6a6 6 0 0 0 6 -3" />
-            <path d="M15 9m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-          </svg>
-          <p>Made with ❤️ by Aaditya Aanand</p>
+    <footer id="footer" className="w-full bg-[#080614] border-t border-white/10 text-white relative z-10 py-5 px-4 sm:px-8">
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        {/* Left: Brand & Title */}
+        <div className="flex items-center gap-3">
+          <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-[#915eff] to-[#00cea8] flex items-center justify-center font-bold text-xs text-white shadow-md">
+            A
+          </div>
+          <div>
+            <span className="font-bold text-sm tracking-tight text-white">
+              Aaditya Aanand
+            </span>
+            <span className="text-secondary text-xs ml-2 font-mono hidden md:inline">
+              Full-Stack Developer & Systems
+            </span>
+          </div>
         </div>
-      </footer>
-    </div>
+
+        {/* Center: Compact Nav Links */}
+        <div className="flex items-center gap-3 sm:gap-5 text-xs text-secondary font-medium">
+          <button onClick={() => scrollTo("hero")} className="hover:text-white transition-colors cursor-pointer">
+            Home
+          </button>
+          <button onClick={() => scrollTo("about")} className="hover:text-white transition-colors cursor-pointer">
+            About
+          </button>
+          <button onClick={() => scrollTo("projects")} className="hover:text-white transition-colors cursor-pointer">
+            Projects
+          </button>
+          <button onClick={() => scrollTo("tech")} className="hover:text-white transition-colors cursor-pointer">
+            Skills
+          </button>
+          <button onClick={() => scrollTo("contact")} className="hover:text-white transition-colors cursor-pointer">
+            Contact
+          </button>
+        </div>
+
+        {/* Right: Socials & Back to Top */}
+        <div className="flex items-center gap-3">
+          <a
+            href="https://github.com/Aaditya514"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            className="w-7 h-7 rounded-lg bg-white/5 hover:bg-[#915eff] text-secondary hover:text-white flex items-center justify-center transition-all duration-200"
+          >
+            <FaGithub size={13} />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/aadityaaanand514/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="w-7 h-7 rounded-lg bg-white/5 hover:bg-[#00cea8] text-secondary hover:text-white flex items-center justify-center transition-all duration-200"
+          >
+            <FaLinkedin size={13} />
+          </a>
+          <a
+            href="https://leetcode.com/u/Aaditya_514/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LeetCode"
+            className="w-7 h-7 rounded-lg bg-white/5 hover:bg-amber-400 text-secondary hover:text-black flex items-center justify-center transition-all duration-200"
+          >
+            <SiLeetcode size={13} />
+          </a>
+
+          <button
+            onClick={scrollToTop}
+            title="Back to Top"
+            className="w-7 h-7 rounded-lg bg-tertiary hover:bg-[#915eff] border border-white/10 text-secondary hover:text-white flex items-center justify-center transition-all duration-200 cursor-pointer ml-1"
+          >
+            <FaArrowUp size={11} />
+          </button>
+        </div>
+      </div>
+
+      {/* Subtle Copyright Strip */}
+      <div className="max-w-7xl mx-auto mt-3 pt-3 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-[11px] text-secondary/70 gap-1 font-mono">
+        <p className="flex items-center gap-1">
+          Designed with <FaHeart className="text-rose-500 inline text-[9px]" /> by Aaditya Aanand
+        </p>
+        <p>© {new Date().getFullYear()} All rights reserved.</p>
+      </div>
+    </footer>
   );
 };
 
