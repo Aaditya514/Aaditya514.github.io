@@ -24,6 +24,7 @@ import cpp from "./tech/cpp.png";
 import tailwind from "./tech/tailwind.png";
 import java from "./tech/java.png";
 import typescript from "./tech/typescript.png";
+import springboot from "./tech/springboot.svg";
 
 import Projectjob from "./Projectjob.png";
 import notification from "./notification.png";
@@ -58,6 +59,7 @@ export {
   cpp,
   postgres,
   typescript,
+  springboot,
   angular,
   Projectjob,
   Dashboard,

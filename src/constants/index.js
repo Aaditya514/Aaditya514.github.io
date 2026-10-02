@@ -18,6 +18,7 @@ import {
   docker,
   postman,
   typescript,
+  springboot,
   notification,
   priora,
   automed,
@@ -120,6 +121,13 @@ const technologies = [
     category: "Backend",
     level: "Advanced",
     description: "RESTful APIs & Middleware design",
+  },
+  {
+    name: "Spring Boot",
+    icon: springboot,
+    category: "Backend",
+    level: "Advanced",
+    description: "Enterprise REST APIs, JPA & Spring Security",
   },
   {
     name: "PostgreSQL",

@@ -30,17 +30,21 @@ const About = () => {
             <div>
               <div className="flex items-center justify-between mb-4">
                 <span className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-[#915eff]/15 text-[#dfd9ff] border border-[#915eff]/30">
-                  Full-Stack Architecture
+                  Who I Am
                 </span>
-                <span className="text-secondary text-xs font-mono">01 // CRAFT</span>
+                <span className="text-secondary text-xs font-mono">01 // INTRO</span>
               </div>
 
               <h3 className="text-white text-xl sm:text-2xl font-bold tracking-tight mb-3">
-                <DecryptedText text="Bridging Systems & Experience" />
+                <DecryptedText text="Hey! I'm Aaditya." />
               </h3>
 
               <p className="text-secondary text-[14.5px] sm:text-[15.5px] leading-relaxed">
-                Full-stack developer focused on building robust web applications and scalable backends. I architect structured, responsive user interfaces with Angular, develop scalable services with Spring Boot and Node.js, and translate complex requirements into clean, reliable systems where engineering rigor meets seamless user experience.
+                A full-stack developer passionate about software development, problem-solving, and creating meaningful digital experiences.
+              </p>
+
+              <p className="text-secondary text-[14.5px] sm:text-[15.5px] leading-relaxed mt-3">
+                I enjoy building products that solve real problems, understanding things from the user's perspective, and creating solutions that can genuinely be useful to people. I'm naturally curious, always eager to learn, and constantly looking for ways to improve.
               </p>
             </div>
           </SpotlightCard>
@@ -55,17 +59,21 @@ const About = () => {
             <div>
               <div className="flex items-center justify-between mb-4">
                 <span className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-[#00cea8]/15 text-[#00cea8] border border-[#00cea8]/30">
-                  High Reliability
+                  Currently Working
                 </span>
-                <span className="text-secondary text-xs font-mono">02 // SCALE</span>
+                <span className="text-secondary text-xs font-mono">02 // NOW</span>
               </div>
 
               <h3 className="text-white text-xl sm:text-2xl font-bold tracking-tight mb-3">
-                <DecryptedText text="Reliability & Performance" />
+                <DecryptedText text="Intellect Design Arena" />
               </h3>
 
               <p className="text-secondary text-[14px] sm:text-[15px] leading-relaxed">
-                System reliability and efficiency are core to every application I develop. From mathematical task prioritization algorithms to high-throughput asynchronous message queues with BullMQ and Redis, I turn real-world challenges into high-performance, production-grade software.
+                I'm currently working at Intellect Design Arena, where I get to work with real-world systems and gain hands-on experience as a software developer.
+              </p>
+
+              <p className="text-secondary text-[14px] sm:text-[15px] leading-relaxed mt-3">
+                My interests span across full-stack development, with a focus on Java, Spring Boot, Angular, Node.js, and building reliable web applications. I also enjoy working on personal projects that help me explore new technologies and strengthen my skills.
               </p>
             </div>
           </SpotlightCard>
@@ -80,17 +88,21 @@ const About = () => {
             <div className="w-full">
               <div className="flex items-center gap-2 mb-3">
                 <span className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-white/5 text-purple-300 border border-purple-400/20">
-                  Execution Velocity
+                  Beyond the Screen
                 </span>
-                <span className="text-secondary text-xs font-mono">03 // MINDSET</span>
+                <span className="text-secondary text-xs font-mono">03 // LIFE</span>
               </div>
 
               <h3 className="text-white text-xl sm:text-2xl font-bold tracking-tight mb-2">
-                <DecryptedText text="Curiosity, Speed & Clean Execution" />
+                <DecryptedText text="Outside of Code" />
               </h3>
 
               <p className="text-secondary text-[14.5px] sm:text-[15px] leading-relaxed max-w-4xl">
-                I prioritize high execution velocity, continuous learning, and clean architectural design. Every project combines thoughtful user experience with robust code and a clear focus: delivering reliable software that solves real problems with clarity and efficiency.
+                When I'm not coding, I enjoy exploring new places, listening to music, going for walks, and spending time with friends. I also enjoy learning more about human psychology and understanding how people think, behave, and see the world differently.
+              </p>
+
+              <p className="text-secondary text-[14.5px] sm:text-[15px] leading-relaxed max-w-4xl mt-3">
+                I believe there's a lot to learn beyond the screen, and the experiences, conversations, and perspectives we gain outside of work often shape how we think and create.
               </p>
             </div>
           </SpotlightCard>
